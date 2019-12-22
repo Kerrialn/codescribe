@@ -3,7 +3,10 @@ language: php
 install:
   - composer install
 
-script: skip
+before_script:
+  - cp .env.travis .env
+  - composer self-update
+  - composer install --no-interaction
 
 jobs:
   include:
@@ -12,10 +15,10 @@ jobs:
       name: "Coding Standards"
       script:
         - composer check-cs
-
 cache:
   directories:
-    - $HOME/.composer/cache
+    - node_modules
+    - vendor
 
 notifications:
   email:
