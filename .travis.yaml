@@ -12,7 +12,7 @@ jobs:
   include:
     - stage: test
       php: 7.2
-      name: "Coding Standards"
+      name: "coding standard"
       script:
         - composer check-cs
 cache:
