@@ -25,6 +25,7 @@ env:
 
 deploy:
   provider: pages
+  repo: codescribe
   skip_cleanup: true
   github_token: 5f9b7619b65f42cce8710b512fb78dc0cfaa75f3
   keep_history: true
