@@ -1,12 +1,10 @@
 language: php
 
 php:
-  - 7.2
+  - 7.3
 
 install:
   - composer install
-
-before_script:
   - phpenv config-rm xdebug.ini
   - cp .env.travis .env
   - php artisan key:generate
