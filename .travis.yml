@@ -17,7 +17,7 @@ cache:
     - vendor
 
 deploy:
-  provider: pages
+  provider: gh-pages -d public
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   on:
