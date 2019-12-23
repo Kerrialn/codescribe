@@ -2,10 +2,12 @@ language: php
 
 php:
   - 7.3
+
 jobs:
   include:
 
-    - stage: preprare
+    -
+      stage: preprare
       name: install
       script:
         - composer install
@@ -13,7 +15,8 @@ jobs:
         - npm install
 
 
-    - stage: deploy
+    -
+      stage: deploy
       namae: 'Deploy to Github Pages'
       if: branch = master
         script:
