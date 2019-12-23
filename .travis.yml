@@ -2,17 +2,12 @@ language: php
 
 php:
   - 7.3
-
 install:
   - composer install
-  - phpenv config-rm xdebug.ini
-  - cp .env.travis .env
   - php artisan key:generate
   - npm install
 
-script:
-  - phpdbg -qrr vendor/bin/phpunit --coverage-clover=coverage.xml
-
+script: skip
 services:
   - mysql
 
