@@ -26,7 +26,9 @@ env:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: f3b498fc37f0a0d7a2d045c4e87184a675c4cac5
-  keep_history: true
-  on:
-    branch: master
+  github_token: $GITHUB_TOKEN
+  local_dir: output
+
+
+
+
