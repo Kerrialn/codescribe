@@ -1,0 +1,28 @@
+language: php
+
+php:
+  - 7.3
+
+install:
+  - composer install
+  - npm install
+
+script: skip
+services:
+  - mysql
+
+cache:
+  directories:
+    - node_modules
+    - vendor
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+
+
+
+
