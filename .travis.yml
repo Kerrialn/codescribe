@@ -17,10 +17,13 @@ cache:
     - vendor
 
 deploy:
-  provider: gh-pages
+  provider: gh-pages -d public
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: output
+  on:
+    branch: gh-pages
+
 
 
 
