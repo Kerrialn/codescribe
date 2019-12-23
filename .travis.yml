@@ -3,36 +3,30 @@ language: php
 php:
   - 7.3
 
-jobs:
-  include:
+install:
+  - composer install
+  - phpenv config-rm xdebug.ini
+  - cp .env.travis .env
+  - php artisan key:generate
+  - npm install
 
-    -
-      stage: preprare
-      name: install
-      script:
-        - composer install
-        - php artisan key:generate
-        - npm install
+script:
+  - phpdbg -qrr vendor/bin/phpunit --coverage-clover=coverage.xml
 
-
-    -
-      stage: deploy
-      namae: 'Deploy to Github Pages'
-      if: branch = master
-        script:
-          # import data
-          - bin/console import -vvv
-          # generate website to "/output" directory
-          - vendor/bin/statie generate source -vvv
-
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        github_token: $GITHUB_TOKEN
-        local_dir: output
+services:
+  - mysql
 
 cache:
   directories:
     - node_modules
     - vendor
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+
+
 
